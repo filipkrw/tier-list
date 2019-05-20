@@ -6,21 +6,18 @@
 
 .tier-letter {
   width: 5vw;
-  height: 5vw;
+  min-height: 5vw;
 }
 
 .tier-bucket-outer {
-  background: #222;
+  background: #282828;
   margin-left: 1vw;
   padding: .5vw;
 }
 
 .tier-bucket-middle {
-  height: 4vw;
   width: 53.5vw;
-  background: #1a1a1a;
-  /* background: tomato; */
-  /* margin-bottom: -1vw; */
+  background: #191919;
 }
 
 .tier-bucket {
@@ -32,36 +29,67 @@
   top: -.25vw;
   left: -.25vw;
 
-  /* margin-bottom: -.5vw; */
+  margin-bottom: -1vw;
+}
+
+.tier-bucket-bottom-border {
+  width: 100%;
+  height: .5vw;
+  background: #282828;
+  position: relative;
+  top: .5vw;
+}
+
+.no-extra-border .tier-bucket-bottom-border {
+  display: none;
 }
 
 .tier-element-outer {
   width: 5vw;
   height: 5vw;
   margin: -.25vw;
-  background: #222;
+  /* background: #282828; */
 }
 
 .tier-element {
-  border: .5vw solid #222;
+  border: .5vw solid #282828;
   width: calc(100% - 1vw);
   height: calc(100% - 1vw);
-  background: #1a1a1a;
+  background: #333;
   position: relative;
   top: 0;
   left: 0;
   transition: all .1s;
-  background: #1a1a1a;
+  z-index: 100;
 }
 
 .tier-element:hover {
   cursor: pointer;
-  border: .5vw solid #fff;
+  /* border: .5vw solid #fff; */
+  border-color: #fff;
   width: 100%;
   height: 100%;
   top: -.5vw;
   left: -.5vw;
-  z-index: 100;
+  z-index: 400;
+}
+
+.tier-element img {
+  width: 100%;
+  height: 100%;
+  /* display: none; */
+}
+
+.selected {
+  cursor: pointer;
+  /* border: .5vw solid #fff; */
+  border-color: #fff;
+  border-style: dashed;
+  width: 100%;
+  height: 100%;
+  top: -.5vw;
+  left: -.5vw;
+  z-index: 300;
 }
 
 /* Tiers */

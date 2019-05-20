@@ -10,31 +10,28 @@ const Tier = (props) => {
   const elements = []
 
   if (props.letter === 'S') {
-    elements.push(<Element image={gothic2} alt="Gothic" />)
-    elements.push(<Element image={gothic} alt="Gothic 2" />)
-    elements.push(<Element image={gothic2} alt="Gothic" />)
-  }
-
-  if (props.letter === 'A') {
-    elements.push(<Element image={gothic3} alt="Gothic 3" />)
     elements.push(<Element image={gothic} alt="Gothic" />)
-    elements.push(<Element image={gothic3} alt="Gothic 3" />)
-    elements.push(<Element image={gothic} alt="Gothic" />)
-    elements.push(<Element image={gothic3} alt="Gothic 3" />)
-    elements.push(<Element image={gothic3} alt="Gothic 3" />)
-    elements.push(<Element image={gothic} alt="Gothic" />)
-
-    elements.push(<Element image={gothic3} alt="Gothic 3" />)
-    elements.push(<Element image={gothic} alt="Gothic" />)
+    elements.push(<Element image={gothic2} alt="Gothic 2" />)
   }
 
   if (props.letter === 'C') {
-    elements.push(<Element image={gothic2} alt="Gothic" />)
-    elements.push(<Element image={gothic} alt="Gothic 2" />)
+    elements.push(<Element image={gothic3} alt="Gothic 3" />)
+  }
+
+  let classes = props.letter + ' tier'
+
+  if (
+    props.letter === 'A' ||
+    props.letter === 'B' ||
+    props.letter === 'D' ||
+    props.letter === 'E' ||
+    props.letter === 'F'
+  ) {
+    classes += ' no-extra-border'
   }
 
   return (
-    <div className={props.letter + ' tier'}>
+    <div className={classes}>
       <TierLetter letter={props.letter} />
       <TierElements elements={elements} />
     </div>
