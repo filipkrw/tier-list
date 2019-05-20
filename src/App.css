@@ -1,3 +1,10 @@
+@font-face {
+font-family: 'Somatic Rounded';
+font-style: normal;
+font-weight: normal;
+src: local('Somatic Rounded'), url('./fonts/Somatic-Rounded.woff') format('woff');
+}
+
 /* Tier list */
 .tier {
   display: flex;
@@ -5,8 +12,14 @@
 }
 
 .tier-letter {
+  font-family: 'Somatic Rounded';
+  color: rgba(0, 0, 0, .5);
   width: 5vw;
   min-height: 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25vw;
 }
 
 .tier-bucket-outer {
@@ -55,7 +68,7 @@
   border: .5vw solid #282828;
   width: calc(100% - 1vw);
   height: calc(100% - 1vw);
-  background: #333;
+  background: #1a1a1a;
   position: relative;
   top: 0;
   left: 0;
@@ -66,7 +79,7 @@
 .tier-element:hover {
   cursor: pointer;
   /* border: .5vw solid #fff; */
-  border-color: #fff;
+  /* border-color: #fff; */
   width: 100%;
   height: 100%;
   top: -.5vw;
@@ -77,14 +90,13 @@
 .tier-element img {
   width: 100%;
   height: 100%;
-  /* display: none; */
+  display: none;
 }
 
 .selected {
   cursor: pointer;
   /* border: .5vw solid #fff; */
   border-color: #fff;
-  border-style: dashed;
   width: 100%;
   height: 100%;
   top: -.5vw;
@@ -92,14 +104,14 @@
   z-index: 300;
 }
 
-/* Tiers */
-#S { background: #fd817f }
-#A { background: #ffbf7f }
-#B { background: #feff7f }
-#C { background: #7eff80 }
-#D { background: #7fbfff }
-#E { background: #807fff }
-#F { background: #ff7ffe }
+/* Letters */
+#S { background: #fd817f; }
+#A { background: #ffbf7f; }
+#B { background: #feff7f; }
+#C { background: #7eff80; }
+#D { background: #7fbfff; }
+#E { background: #807fff; }
+#F { background: #ff7ffe; }
 
 /* General */
 html {

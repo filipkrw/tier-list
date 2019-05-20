@@ -2,8 +2,8 @@ import React from 'react'
 
 const TierLetter = (props) => {
   return (
-    <div id={props.letter} className="tier-letter" style={{ borderRadius: 0 }}>
-      
+    <div id={props.letter} className="tier-letter">
+      {props.letter}
     </div>
   )
 }
