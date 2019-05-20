@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import TierList from './TierList'
 import Sidebar from './Sidebar'
-import './App.css'
+import './App.scss'
 
 function App() {
   return (
