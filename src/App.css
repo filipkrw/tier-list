@@ -1,33 +1,99 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Tier list */
+.tier {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-bottom: 1vw;
 }
 
-.App-link {
-  color: #61dafb;
+.tier-letter {
+  width: 5vw;
+  height: 5vw;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.tier-bucket-outer {
+  background: #222;
+  margin-left: 1vw;
+  padding: .5vw;
+}
+
+.tier-bucket-middle {
+  height: 4vw;
+  width: 53.5vw;
+  background: #1a1a1a;
+  /* background: tomato; */
+  /* margin-bottom: -1vw; */
+}
+
+.tier-bucket {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 4vw;
+  width: 54.5vw;
+  position: relative;
+  top: -.25vw;
+  left: -.25vw;
+
+  /* margin-bottom: -.5vw; */
+}
+
+.tier-element-outer {
+  width: 5vw;
+  height: 5vw;
+  margin: -.25vw;
+  background: #222;
+}
+
+.tier-element {
+  border: .5vw solid #222;
+  width: calc(100% - 1vw);
+  height: calc(100% - 1vw);
+  background: #1a1a1a;
+  position: relative;
+  top: 0;
+  left: 0;
+  transition: all .1s;
+  background: #1a1a1a;
+}
+
+.tier-element:hover {
+  cursor: pointer;
+  border: .5vw solid #fff;
+  width: 100%;
+  height: 100%;
+  top: -.5vw;
+  left: -.5vw;
+  z-index: 100;
+}
+
+/* Tiers */
+#S { background: #fd817f }
+#A { background: #ffbf7f }
+#B { background: #feff7f }
+#C { background: #7eff80 }
+#D { background: #7fbfff }
+#E { background: #807fff }
+#F { background: #ff7ffe }
+
+/* General */
+html {
+  height: 100%;
+}
+
+body {
+  background: #000;
+  padding: 4vw;
+}
+
+#root {
+  width: 92vw;
+  display: flex;
+  height: 100%;
+}
+
+#tier-list {
+  width: 60.5vw;
+  margin-right: 3vw;
+}
+
+#sidebar {
+  width: 25vw;
 }
