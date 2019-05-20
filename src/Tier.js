@@ -12,6 +12,20 @@ const Tier = (props) => {
   if (props.letter === 'S') {
     elements.push(<Element image={gothic} alt="Gothic" />)
     elements.push(<Element image={gothic2} alt="Gothic 2" />)
+    elements.push(<Element image={gothic} alt="Gothic" />)
+    elements.push(<Element image={gothic2} alt="Gothic 2" />)
+    elements.push(<Element image={gothic} alt="Gothic" />)
+    elements.push(<Element image={gothic2} alt="Gothic 2" />)
+    elements.push(<Element image={gothic} alt="Gothic" />)
+    elements.push(<Element image={gothic2} alt="Gothic 2" />)
+    elements.push(<Element image={gothic} alt="Gothic" />)
+    elements.push(<Element image={gothic2} alt="Gothic 2" />)
+    elements.push(<Element image={gothic} alt="Gothic" />)
+    elements.push(<Element image={gothic2} alt="Gothic 2" />)
+    elements.push(<Element image={gothic} alt="Gothic" />)
+    elements.push(<Element image={gothic2} alt="Gothic 2" />)
+    elements.push(<Element image={gothic} alt="Gothic" />)
+    elements.push(<Element image={gothic2} alt="Gothic 2" />)
   }
 
   if (props.letter === 'C') {
