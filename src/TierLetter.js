@@ -8,10 +8,4 @@ const TierLetter = (props) => {
   )
 }
 
-// <img style={{
-//     width: 'auto',
-//     height: 26,
-//     padding: '26px 26px 21px 26px'
-//   }} src={"https://svgshare.com/i/D6Y.svg"} alt="" />
-
 export default TierLetter

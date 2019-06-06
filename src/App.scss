@@ -1,18 +1,126 @@
 /* ----------------------- Variables ------------------------ */
 $grey: #1a1a1a;
 $lightGrey: #282828;
+$lighterGrey: #333;
 
-$box: 6vw;
+$fontFamily: 'Somatic Rounded', sans-serif;
+
+$box: 7vw;
 $gap: 1vw;
-$columns: 10;
+$listCols: 8;
+$sidebarCols: 4;
 
+$tripleGap: $gap * 3;
 $noBorderBox: $box - $gap;
 $border: $gap / 2;
 $halfBorder: $gap / 4;
-$letterSize: .25 * $box;
+$fontSize: $box * .23;
 
-$bucketWidth: ($columns * $noBorderBox) + (($columns + 1) * $border);
-$rowWidth: $box + $gap + $bucketWidth;
+$bucketWidth: ($listCols * $noBorderBox) + (($listCols + 1) * $border);
+$listWidth: $box + $gap + $bucketWidth;
+$sidebarWidth: ($sidebarCols * $noBorderBox) + (($sidebarCols + 1) * $border);
+
+$padding: (100vw - ($listWidth + $sidebarWidth)) / 3;
+
+/* ----------------------- Fonts -------------------------- */
+@font-face {
+  font-family: 'Somatic Rounded';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Somatic Rounded'), url('./fonts/Somatic-Rounded.woff') format('woff');
+}
+
+/* ---------------------- General ------------------------- */
+html {
+  height: 100%;
+}
+
+body {
+  background: #000;
+  color: #fff;
+
+  font-family: $fontFamily;
+  font-size: $fontSize;
+  line-height: 1.5;
+
+  padding: $padding;
+  padding-top: $tripleGap;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  height: 100%;
+}
+
+.content {
+  display: flex;
+}
+
+/* ---------------------- Tier Colors ---------------------- */
+#S { background: #fd817f; }
+#A { background: #ffbf7f; }
+#B { background: #feff7f; }
+#C { background: #7eff80; }
+#D { background: #7fbfff; }
+#E { background: #807fff; }
+#F { background: #ff7ffe; }
+
+/* ------------------------ Header ------------------------ */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: $gap * 3;
+}
+
+.menu > * { margin: 0 $border; }
+.menu { display: flex; }
+.menu > *:first-child { margin-left: 0; }
+.menu > *:last-child { margin-right: 0; }
+
+.button {
+  background: #fff;
+  height: $box / 2 + .1;
+  padding: 0 $gap * 1.4;
+  color: #000;
+
+  display: flex;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+/* ------------------------ Sidebar ------------------------ */
+#sidebar {
+  width: $sidebarWidth;
+
+  position: absolute;
+  right: $padding;
+  height: $box;
+}
+
+.link {
+  border-bottom: $border solid rgba(255, 255, 255, 1);
+  margin-right: $border;
+  margin-bottom: -$border;
+}
+
+#sidebar .tier-bucket-middle {
+  width: $sidebarWidth - $gap;
+}
+
+#sidebar .tier-bucket {
+  width: $sidebarWidth;
+}
+
+/* ---------------------- Tier list ------------------------ */
+#tier-list {
+  width: $listWidth;
+  margin-right: $padding;
+}
 
 /* ------------------------- Tier -------------------------- */
 .tier {
@@ -27,11 +135,9 @@ $rowWidth: $box + $gap + $bucketWidth;
 /* ---------------------- Tier letter ---------------------- */
 .tier-letter {
   width: $box;
-  min-height: $box;
+  margin-right: $gap;
 
-  font-family: 'Somatic Rounded';
-  font-size: $letterSize;
-  color: rgba(0, 0, 0, .4);
+  color: rgba(0, 0, 0, .45);
 
   display: flex;
   align-items: center;
@@ -41,9 +147,9 @@ $rowWidth: $box + $gap + $bucketWidth;
 /* ---------------------- Tier bucket ---------------------- */
 .tier-bucket-outer {
   background: $lightGrey;
-  margin-left: $gap;
+
+  min-height: $noBorderBox;
   padding: $border;
-  transition: .1s;
 }
 
 .tier-bucket-middle {
@@ -55,8 +161,8 @@ $rowWidth: $box + $gap + $bucketWidth;
   display: flex;
   flex-wrap: wrap;
 
-  min-height: $noBorderBox;
   width: $bucketWidth;
+  min-height: $noBorderBox;
   margin-bottom: -$gap;
 
   position: relative;
@@ -85,21 +191,25 @@ $rowWidth: $box + $gap + $bucketWidth;
 }
 
 .tier-element {
-  width: calc(100% - #{$gap});
-  height: calc(100% - #{$gap});
+  width: $noBorderBox;
+  height: $noBorderBox;
 
-  background: $grey;
+  background-color: $grey;
+  background-size: cover;
+  background-position: center;
+
   border: $border solid $lightGrey;
-  transition: all .1s;
 
   position: relative;
   top: 0;
   left: 0;
   z-index: 100;
+
+  cursor: pointer;
 }
 
 .tier-element:hover {
-  cursor: pointer;
+  border-color: #a0a0a0;
 
   width: 100%;
   height: 100%;
@@ -111,59 +221,15 @@ $rowWidth: $box + $gap + $bucketWidth;
 
 .selected {
   border-color: #fff;
+
   width: 100%;
   height: 100%;
 
   top: -$border;
   left: -$border;
-  z-index: 300;
+  z-index: 500;
 }
 
-/* ---------------------- General ------------------------- */
-html {
-  height: 100%;
-}
-
-body {
-  background: #000;
-  padding: $box / 2;
-}
-
-img {
-  width: 100%;
-  height: 100%;
-  display: none;
-}
-
-#root {
-  width: 92vw;
-  display: flex;
-  height: 100%;
-}
-
-#tier-list {
-  width: $rowWidth;
-  margin-right: 3vw;
-}
-
-#sidebar {
-  width: 25vw;
-  display: none;
-}
-
-/* ----------------------- Colors -------------------------- */
-#S { background: #fd817f; }
-#A { background: #ffbf7f; }
-#B { background: #feff7f; }
-#C { background: #7eff80; }
-#D { background: #7fbfff; }
-#E { background: #807fff; }
-#F { background: #ff7ffe; }
-
-/* ----------------------- Fonts -------------------------- */
-@font-face {
-  font-family: 'Somatic Rounded';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Somatic Rounded'), url('./fonts/Somatic-Rounded.woff') format('woff');
+.selected:hover {
+  border-color: #fff;
 }

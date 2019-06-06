@@ -6,14 +6,18 @@ const Element = (props) => {
   let classes = 'tier-element'
   if (selected) { classes += ' selected' }
 
+  const image = { backgroundImage: `url(${props.image})` }
+
   return (
     <div
       className="tier-element-outer"
       onClick={() => setSelected(!selected)}
     >
-      <div className={classes}>
-        <img src={props.image} alt={props.alt} />
-      </div>
+      <div
+        className={classes}
+        style={image}
+        title={props.title}
+      />
     </div>
   )
 }
