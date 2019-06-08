@@ -1,22 +1,30 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
+import { SelectedContext } from './App'
 
-const Element = (props) => {
-  let [selected, setSelected] = useState(false)
+const Element = ({ image, title, group, index }) => {
+  let [selected, setSelected] = useContext(SelectedContext)
+  const currentSelected = selected.group === group && selected.index === index;
 
   let classes = 'tier-element'
-  if (selected) { classes += ' selected' }
+  if (currentSelected) { classes += ' selected' }
 
-  const image = { backgroundImage: `url(${props.image})` }
+  const select = () => {
+    if (currentSelected) {
+      setSelected({})
+    } else {
+      setSelected({ group, index, flag: true })
+    }
+  }
 
   return (
     <div
       className="tier-element-outer"
-      onClick={() => setSelected(!selected)}
+      onClick={select}
     >
       <div
+        title={title}
         className={classes}
-        style={image}
-        title={props.title}
+        style={{ backgroundImage: `url(${image})` }}
       />
     </div>
   )

@@ -1,10 +1,10 @@
 import React from 'react'
 import Tier from './Tier'
 
-const Sidebar = () => {
+const Sidebar = (props) => {
   return (
     <div id="sidebar">
-      <Tier elements={[]} />
+      <Tier letter="na" elements={props.elements.na} />
     </div>
   )
 }

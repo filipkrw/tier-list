@@ -59,13 +59,13 @@ body {
 }
 
 /* ---------------------- Tier Colors ---------------------- */
-#S { background: #fd817f; }
-#A { background: #ffbf7f; }
-#B { background: #feff7f; }
-#C { background: #7eff80; }
-#D { background: #7fbfff; }
-#E { background: #807fff; }
-#F { background: #ff7ffe; }
+#s { background: #fd817f; }
+#a { background: #ffbf7f; }
+#b { background: #feff7f; }
+#c { background: #7eff80; }
+#d { background: #7fbfff; }
+#e { background: #807fff; }
+#f { background: #ff7ffe; }
 
 /* ------------------------ Header ------------------------ */
 .header {
@@ -137,6 +137,7 @@ body {
   width: $box;
   margin-right: $gap;
 
+  text-transform: uppercase;
   color: rgba(0, 0, 0, .45);
 
   display: flex;
@@ -177,10 +178,6 @@ body {
 
   position: relative;
   top: $border;
-}
-
-.no-extra-border .tier-bucket-bottom-border {
-  display: none;
 }
 
 /* --------------------- Tier element ---------------------- */
@@ -227,7 +224,7 @@ body {
 
   top: -$border;
   left: -$border;
-  z-index: 500;
+  z-index: 300;
 }
 
 .selected:hover {
