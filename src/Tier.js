@@ -21,7 +21,7 @@ const Tier = (props) => {
     />
   ))
 
-  let move = useContext(MoveContext)
+  const move = useContext(MoveContext)
 
   return (
     <div className={classes}>

@@ -146,87 +146,71 @@ body {
 }
 
 /* ---------------------- Tier bucket ---------------------- */
-.tier-bucket-outer {
-  background: $lightGrey;
-
-  min-height: $noBorderBox;
-  padding: $border;
-}
-
-.tier-bucket-middle {
-  width: $bucketWidth - $gap;
-  background: $grey;
-}
-
 .tier-bucket {
   display: flex;
   flex-wrap: wrap;
 
-  width: $bucketWidth;
-  min-height: $noBorderBox;
-  margin-bottom: -$gap;
-
-  position: relative;
-  top: -$halfBorder;
-  left: -$halfBorder;
-}
-
-.tier-bucket-bottom-border {
-  width: 100%;
-  height: $border;
   background: $lightGrey;
 
+  width: $bucketWidth;
+  min-height: $box - $border;
+  border-right: $border solid $lightGrey;
+  border-bottom: $border solid $lightGrey;
+
   position: relative;
-  top: $border;
 }
 
 /* --------------------- Tier element ---------------------- */
-.tier-element-outer {
-  width: $box;
-  height: $box;
-  margin: -$halfBorder;
+.tier-element {
+  height: $noBorderBox;
+  margin-top: $border;
+  margin-left: $border;
+  background: $grey;
 }
 
-.tier-element {
+.tier-element.member {
   width: $noBorderBox;
-  height: $noBorderBox;
 
-  background-color: $grey;
   background-size: cover;
   background-position: center;
-
-  border: $border solid $lightGrey;
-
-  position: relative;
-  top: 0;
-  left: 0;
-  z-index: 100;
 
   cursor: pointer;
 }
 
-.tier-element:hover {
-  border-color: #a0a0a0;
+.tier-element-inner {
+  background-color: $grey;
 
   width: 100%;
   height: 100%;
-
-  top: -$border;
-  left: -$border;
-  z-index: 400;
 }
 
-.selected {
+.tier-element.member .tier-element-inner:hover,
+.tier-element-inner.selected {
+  position: relative;
+  left: -$gap;
+  top: -$gap;
+
+  height: $box;
+  width: $box;
+
+  border: $border solid #ccc;
+
+  z-index: 500;
+}
+
+.tier-element.member .tier-element-inner.selected {
   border-color: #fff;
-
-  width: 100%;
-  height: 100%;
-
-  top: -$border;
-  left: -$border;
-  z-index: 300;
 }
 
-.selected:hover {
-  border-color: #fff;
+.tier-element.filler {
+  flex: 1;
 }
+
+// .tier-element.filler .tier-element-inner:hover {
+//   position: relative;
+//   left: -$border;
+//   top: -$border;
+//
+//   border: $border solid #ccc;
+//   cursor: pointer;
+// }

@@ -10,10 +10,10 @@ export const SelectedContext = createContext()
 
 function App() {
   let [elements, setElements] = useState({
-    na: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
-    s: [],
+    s: [{}, {}, {}, {}, {}, {}, {}],
+    na: [{}],
     a: [],
-    b: [],
+    b: [{}, {}, {}, {}, {}],
     c: [],
     d: [],
     e: [],
