@@ -184,14 +184,14 @@ body {
   height: 100%;
 }
 
-.tier-element.member .tier-element-inner:hover,
+.allow-select .tier-element.member .tier-element-inner:hover,
 .tier-element-inner.selected {
   position: relative;
-  left: -$gap;
-  top: -$gap;
+  left: -$border;
+  top: -$border;
 
-  height: $box;
-  width: $box;
+  height: $noBorderBox;
+  width: $noBorderBox;
 
   border: $border solid #ccc;
 
@@ -206,11 +206,14 @@ body {
   flex: 1;
 }
 
-// .tier-element.filler .tier-element-inner:hover {
-//   position: relative;
-//   left: -$border;
-//   top: -$border;
-//
-//   border: $border solid #ccc;
-//   cursor: pointer;
-// }
+.tier.allow-drop .tier-bucket {
+  cursor: pointer;
+}
+
+.tier.allow-drop:not(.selected-in-group) .tier-bucket:hover .tier-element.filler .tier-element-inner {
+  position: relative;
+  left: -$border;
+  top: -$border;
+
+  border: $border solid #fff;
+}

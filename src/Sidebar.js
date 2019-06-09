@@ -4,7 +4,7 @@ import Tier from './Tier'
 const Sidebar = (props) => {
   return (
     <div id="sidebar">
-      <Tier letter="na" elements={props.elements.na} />
+      <Tier group="na" />
     </div>
   )
 }

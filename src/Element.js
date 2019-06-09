@@ -1,22 +1,23 @@
 import React, { useContext } from 'react'
-import { SelectedContext } from './App'
+import { DispatchContext, SelectorsContext } from './App'
 
 const Element = ({ image, title, group, index }) => {
-  const [selected, setSelected] = useContext(SelectedContext)
-  const currentlySelected = selected.group === group && selected.index === index
-
-  const select = () => {
-    if (currentlySelected) { setSelected({}) }
-    else { setSelected({ group, index, flag: true }) }
-  }
+  const dispatch = useContext(DispatchContext)
+  const { isSelected, allowSelect } = useContext(SelectorsContext)
 
   let innerClasses = 'tier-element-inner'
-  if (currentlySelected) { innerClasses += ' selected' }
+  if (isSelected(group, index)) { innerClasses += ' selected' }
+
+  function handleClick() {
+    if (allowSelect()) {
+      dispatch({ type: 'SELECT', payload: { group, index } })
+    }
+  }
 
   return (
     <div
       className="tier-element member"
-      onClick={select}
+      onClick={handleClick}
     >
       <div
         title={title}

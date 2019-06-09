@@ -1,44 +1,18 @@
-import React, { Fragment, useState, createContext } from 'react'
+import React, { Fragment, createContext, useReducer } from 'react'
+import { reducer, initialState } from './store/index'
+import { useSelectors, mapStateToSelectors } from './store/selectors'
 
 import TierList from './TierList'
 import Sidebar from './Sidebar'
 
 import './App.scss'
 
-export const MoveContext = createContext()
-export const SelectedContext = createContext()
+export const DispatchContext = createContext()
+export const SelectorsContext = createContext()
 
 function App() {
-  let [elements, setElements] = useState({
-    s: [{}, {}, {}, {}, {}, {}, {}],
-    na: [{}],
-    a: [],
-    b: [{}, {}, {}, {}, {}],
-    c: [],
-    d: [],
-    e: [],
-    f: []
-  })
-
-  let [selected, setSelected] = useState({})
-
-  const move = (targetGroup) => {
-    if (selected.flag === undefined) { return }
-    if (selected.group === targetGroup) { setSelected({}); return }
-
-    let origin = [...elements[selected.group]]
-    let target = [...elements[targetGroup]]
-
-    target.push(origin.splice(selected.index, 1)[0])
-
-    setElements({
-      ...elements,
-      [selected.group]: origin,
-      [targetGroup]: target
-    })
-
-    setSelected({})
-  }
+  const [state, dispatch] = useReducer(reducer, initialState)
+  const selectors = useSelectors(state, mapStateToSelectors)
 
   return (
     <Fragment>
@@ -54,12 +28,12 @@ function App() {
       </div>
 
       <div className="content">
-        <MoveContext.Provider value={move}>
-          <SelectedContext.Provider value={[selected, setSelected]}>
-            <TierList elements={elements} />
-            <Sidebar elements={elements} />
-          </SelectedContext.Provider>
-        </MoveContext.Provider>
+          <DispatchContext.Provider value={dispatch}>
+            <SelectorsContext.Provider value={selectors}>
+              <TierList />
+              <Sidebar />
+            </SelectorsContext.Provider>
+          </DispatchContext.Provider>
       </div>
     </Fragment>
   )

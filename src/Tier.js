@@ -1,32 +1,45 @@
 import React, { useContext } from 'react'
+import { SelectorsContext, DispatchContext } from './App'
+
 import TierElements from './TierElements'
 import TierLetter from './TierLetter'
 import Element from './Element'
 
-import { MoveContext } from './App'
-
 const Tier = (props) => {
-  let classes = 'tier'
+  const dispatch = useContext(DispatchContext)
+  const { getGroup, allowSelect, isSelectedInGroup } = useContext(SelectorsContext)
 
-  const letter = props.letter !== 'na'
-  if (letter) { classes += ' ' + props.letter }
-
-  const elements = props.elements.map(({ image, title }, index) => (
+  const group = getGroup(props.group)
+  const elements = group.map(({ image, title }, index) => (
     <Element
       key={index}
       image={image}
       title={title}
       index={index}
-      group={props.letter}
+      group={props.group}
     />
   ))
 
-  const move = useContext(MoveContext)
+  let classes = 'tier ' + props.group
+  if (allowSelect()) { classes += ' allow-select' }
+  else {
+    classes += ' allow-drop'
+    if (isSelectedInGroup(props.group)) { classes += ' selected-in-group' }
+  }
+
+  function handleClick() {
+    if (!allowSelect()) {
+      dispatch({ type: 'TRANSFER', payload: { targetGroup: props.group } })
+      dispatch({ type: 'DESELECT' })
+    }
+  }
 
   return (
     <div className={classes}>
-      {letter && <TierLetter letter={props.letter} />}
-      <TierElements elements={elements} onClick={() => move(props.letter)} />
+      {props.group !== 'na' && <TierLetter group={props.group} />}
+      <TierElements onClick={handleClick}>
+        {elements}
+      </TierElements>
     </div>
   )
 }

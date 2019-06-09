@@ -3,8 +3,11 @@ import Filler from './Filler'
 
 const TierElements = (props) => {
   return (
-    <div className="tier-bucket">
-      {props.elements}
+    <div
+      className="tier-bucket"
+      onClick={props.onClick}
+    >
+      {props.children}
       <Filler />
     </div>
   )
