@@ -19,11 +19,13 @@ function App() {
       <div className="header">
         <div className="menu">
           <div className="button">tierlist.io</div>
-          <div className="button">About</div>
-          <div className="button">Share</div>
         </div>
-        <div className="menu">
-          <div className="button">Add images</div>
+        <div className="menu messenger">
+          <p>Go ahead, and start by <span className="button">adding images</span>.</p>
+        </div>
+        <div className="menu align-right">
+          <div className="button"><span class="oi" data-glyph="menu" title="Menu" aria-hidden="true"></span>
+          </div>
         </div>
       </div>
 

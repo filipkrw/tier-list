@@ -1,7 +1,7 @@
 export const initialState = {
   groups: {
-    na: [{}, {}, {}, {}, {}, {}],
-    s: [{}, {}], a: [{}], b: [], c: [], d: [], e: [], f: []
+    na: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
+    s: [], a: [], b: [], c: [], d: [], e: [], f: []
   },
   isSelected: false,
   selected: { group: null, index: null }
@@ -19,7 +19,7 @@ export function reducer(state, action) {
       return { ...state, isSelected: false, selected: {group: null, index: null} }
 
     case 'TRANSFER': {
-      const {groups, selected} = state
+      const { groups, selected } = state
       const targetGroup = action.payload.targetGroup
 
       if (selected.group !== targetGroup) {
@@ -37,7 +37,7 @@ export function reducer(state, action) {
         return { ...state, groups: nextGroups }
       }
 
-      return {...state}
+      return { ...state }
     }
 
     default:

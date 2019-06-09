@@ -3,14 +3,15 @@ $grey: #1a1a1a;
 $lightGrey: #282828;
 $lighterGrey: #333;
 
-$fontFamily: 'Somatic Rounded', sans-serif;
+// $fontFamily: 'Somatic Rounded', sans-serif;
+$fontFamily: 'IBM Plex Sans', sans-serif;
 
 $box: 7vw;
 $gap: 1vw;
 $listCols: 8;
 $sidebarCols: 4;
 
-$tripleGap: $gap * 3;
+$tripleGap: $gap * 2.5;
 $noBorderBox: $box - $gap;
 $border: $gap / 2;
 $halfBorder: $gap / 4;
@@ -22,27 +23,21 @@ $sidebarWidth: ($sidebarCols * $noBorderBox) + (($sidebarCols + 1) * $border);
 
 $padding: (100vw - ($listWidth + $sidebarWidth)) / 3;
 
-/* ----------------------- Fonts -------------------------- */
-@font-face {
-  font-family: 'Somatic Rounded';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Somatic Rounded'), url('./fonts/Somatic-Rounded.woff') format('woff');
-}
-
 /* ---------------------- General ------------------------- */
 html {
   height: 100%;
 }
 
 body {
-  background: #000;
-  color: #fff;
+  background: #0c0c0c;
+  color: #eee;
 
   font-family: $fontFamily;
   font-size: $fontSize;
   line-height: 1.5;
+  font-weight: 300;
 
+  margin: 0;
   padding: $padding;
   padding-top: $tripleGap;
 
@@ -58,39 +53,32 @@ body {
   display: flex;
 }
 
-/* ---------------------- Tier Colors ---------------------- */
-#s { background: #fd817f; }
-#a { background: #ffbf7f; }
-#b { background: #feff7f; }
-#c { background: #7eff80; }
-#d { background: #7fbfff; }
-#e { background: #807fff; }
-#f { background: #ff7ffe; }
-
 /* ------------------------ Header ------------------------ */
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  // display: flex;
+  // align-items: center;
+  // justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
 
-  margin-bottom: $gap * 3;
+  margin-bottom: $tripleGap;
 }
 
 .menu > * { margin: 0 $border; }
-.menu { display: flex; }
+.menu { display: flex; align-items: flex-start; }
 .menu > *:first-child { margin-left: 0; }
 .menu > *:last-child { margin-right: 0; }
+.menu.align-right { display: flex; justify-content: flex-end; }
+
+.menu.messenger { margin: 0 5vw; }
 
 .button {
-  background: #fff;
-  height: $box / 2 + .1;
-  padding: 0 $gap * 1.4;
-  color: #000;
-
-  display: flex;
-  align-items: center;
-
+  font-weight: 800;
   cursor: pointer;
+}
+
+.button:hover {
+  color: #fff;
 }
 
 /* ------------------------ Sidebar ------------------------ */
@@ -134,6 +122,7 @@ body {
 
 /* ---------------------- Tier letter ---------------------- */
 .tier-letter {
+  font-weight: 800;
   width: $box;
   margin-right: $gap;
 
@@ -217,3 +206,12 @@ body {
 
   border: $border solid #fff;
 }
+
+/* ---------------------- Tier Colors ---------------------- */
+#s { background: #fd817f; }
+#a { background: #ffbf7f; }
+#b { background: #feff7f; }
+#c { background: #7eff80; }
+#d { background: #7fbfff; }
+#e { background: #807fff; }
+#f { background: #ff7ffe; }
